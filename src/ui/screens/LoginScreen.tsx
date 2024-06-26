@@ -22,19 +22,45 @@ export const LoginScreen = ({ navigation }: any) => {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    const user = await authController.login(email, password);
-    if (user) {
-      navigation.navigate("Home");
-    } else {
-      alert("Invalid credentials");
+    if (!email || !password) {
+      alert("Por favor, completa todos los campos.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://172.20.10.2:8082/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      console.log('Login response:', data)
+      if (response.ok) {
+        console.log(data);
+        navigation.navigate("Home");
+      } else {
+        console.error('Login error:', data);
+        alert("Login failed: " + (data.message || "Unknown error"));
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert("An error occurred during login.");
     }
   };
 
+  
   return (
     <PaperProvider theme={theme}>
       <ImageBackground
         source={require("../../../assets/background/login/login.jpg")}
-        style={{ flex: 1, resizeMode: "cover", justifyContent: "center" }}
+        style={{ flex: 1, justifyContent: "center" }}
       >
         <View style={styles.overlay} />
         <View style={styles.container}>

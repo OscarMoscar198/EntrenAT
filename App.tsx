@@ -8,6 +8,7 @@ import { RegisterScreen } from "./src/ui/screens/RegisterScreen";
 import { PaperProvider } from "react-native-paper";
 import { AppRegistry } from "react-native";
 import MuscleScreen from "./src/ui/screens/MuscleScreen";
+import HomeScreen from "./src/ui/screens/HomeScreen";
 
 const Stack = createStackNavigator();
 
@@ -19,7 +20,7 @@ export default function App() {
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
-          <Stack.Screen name="Muscles" component={MuscleScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

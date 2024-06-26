@@ -7,9 +7,9 @@ const userRepository = new UserRepository();
 const authService = new AuthService(userRepository);
 
 export const authController = {
-  register: async (email: string, password: string) => {
+  register: async (name: string,email: string, password: string, heigth: number, weigth: number, gender: string) => {
     const registerUser = new RegisterUser(authService);
-    return await registerUser.execute(email, password);
+    return await registerUser.execute(name, email, password, heigth, weigth, gender);
   },
   login: async (email: string, password: string) => {
     const loginUser = new LoginUser(authService);

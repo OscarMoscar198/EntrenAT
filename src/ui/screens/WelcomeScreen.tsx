@@ -21,7 +21,7 @@ export const WelcomeScreen = ({ navigation }: any) => {
     <PaperProvider theme={theme}>
       <ImageBackground
         source={require("../../../assets/background/welcome/welcome.jpg")}
-        style={{ flex: 1, resizeMode: "cover", justifyContent: "center" }}
+        style={{ flex: 1, justifyContent: "center" }}
       >
         <View style={styles.overlay} />
         <View style={styles.container}>
@@ -34,7 +34,7 @@ export const WelcomeScreen = ({ navigation }: any) => {
           <Button
             style={styles.button} // Asegúrate de aplicar el estilo al botón
             mode="contained"
-            onPress={() => navigation.navigate("Register")}
+            onPress={() => navigation.navigate("Login")}
           >
             Comenzar
           </Button>

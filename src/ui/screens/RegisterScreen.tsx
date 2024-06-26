@@ -14,6 +14,7 @@ import {
   Provider as PaperProvider,
   DefaultTheme,
 } from "react-native-paper";
+import { User } from "../../domain/User";
 
 const theme = {
   ...DefaultTheme,
@@ -68,28 +69,53 @@ const styles = StyleSheet.create({
 });
 
 export const RegisterScreen = ({ navigation }: any) => {
-  const [username, setUsername] = useState("");
+  const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [weight, setWeight] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
   const [sex, setSex] = useState("");
 
   const handleRegister = async () => {
-    const user = await authController.register(email, password);
-    if (user) {
-      navigation.navigate("Login");
-    } else {
-      alert("Registration failed");
+    console.log(name, email, password, height, weight, sex);
+    try {
+      const response = await fetch("http://172.20.10.2:8082/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          height: parseFloat(height),
+          weight: parseFloat(weight),
+          sex: sex,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data);
+        navigation.navigate("Login");
+      } else {
+        console.error('Registration error:', data);
+        alert("Registration failed: " + (data.message || "Unknown error"));
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      alert("An error occurred during registration.");
     }
   };
+     
 
   return (
     <PaperProvider theme={theme}>
       <ImageBackground
         source={require("../../../assets/background/register/register.jpg")}
-        style={{ flex: 1, resizeMode: "cover", justifyContent: "center" }}
+        style={{ flex: 1, justifyContent: "center" }}
       >
         <View style={styles.overlay} />
         <View style={styles.container}>
@@ -104,7 +130,7 @@ export const RegisterScreen = ({ navigation }: any) => {
           <TextInput
             style={styles.input}
             placeholder="Nombre de usuario"
-            value={username}
+            value={name}
             onChangeText={setUsername}
           />
           <TextInput
@@ -135,12 +161,14 @@ export const RegisterScreen = ({ navigation }: any) => {
             placeholder="Peso (kg)"
             value={weight}
             onChangeText={setWeight}
+            keyboardType="numeric"
           />
           <TextInput
             style={styles.input}
             placeholder="Altura (m)"
             value={height}
             onChangeText={setHeight}
+            keyboardType="numeric"
           />
           <TextInput
             style={styles.input}
