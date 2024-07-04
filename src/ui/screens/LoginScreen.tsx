@@ -26,24 +26,25 @@ export const LoginScreen = ({ navigation }: any) => {
       alert("Por favor, completa todos los campos.");
       return;
     }
-
+  
     try {
       const response = await fetch("http://172.20.10.2:8082/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          // Agrega otros encabezados si es necesario
         },
         body: JSON.stringify({
           email,
           password,
         }),
+        mode: "cors", // Asegúrate de que se incluya 'cors' en el modo de la solicitud
       });
-
+  
       const data = await response.json();
-
-      console.log('Login response:', data)
+  
       if (response.ok) {
-        console.log(data);
+        console.log('Login successful:', data);
         navigation.navigate("Home");
       } else {
         console.error('Login error:', data);
@@ -54,6 +55,7 @@ export const LoginScreen = ({ navigation }: any) => {
       alert("An error occurred during login.");
     }
   };
+  
 
   
   return (
