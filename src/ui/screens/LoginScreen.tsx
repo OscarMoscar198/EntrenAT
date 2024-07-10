@@ -28,7 +28,7 @@ export const LoginScreen = ({ navigation }: any) => {
     }
   
     try {
-      const response = await fetch("http://172.20.10.2:8082/login", {
+      const response = await fetch("http://44.221.105.166:8081/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

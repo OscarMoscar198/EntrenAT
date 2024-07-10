@@ -1,17 +1,28 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
-import MuscleCard from "../components/muscles/MuscleCard";
-import ExerciseModal from "../components/muscles/ExcerciseModal";
-
-const exercises = ["Bench Press", "Squats", "Fondos", "Barra fija"];
+import BackCard from "../components/muscles/back/BackCard";
+import ChestCard from "../components/muscles/chest/ChestCard";
+import AbsCard from "../components/muscles/core/CoreCard";
+import ArmCard from "../components/muscles/arm/ArmCard";
+import LegCard from "../components/muscles/leg/LegCard";
+import BackModal from "../components/muscles/back/BackModal";
+import ChestModal from "../components/muscles/chest/ChestModal";
+import AbsModal from "../components/muscles/core/CoreModal";
+import ArmModal from "../components/muscles/arm/ArmModal";
+import LegModal from "../components/muscles/leg/LegModal";
 
 export default function MuscleScreen() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedMuscle, setSelectedMuscle] = useState("");
+  const [selectedMuscle, setSelectedMuscle] = useState<string | null>(null);
 
   const handleCardPress = (muscle: string) => {
     setSelectedMuscle(muscle);
     setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+    setSelectedMuscle(null);
   };
 
   return (
@@ -19,23 +30,28 @@ export default function MuscleScreen() {
       <View style={styles.content}>
         <Text style={styles.headerText}>¿Qué músculo vas a entrenar?</Text>
         <ScrollView contentContainerStyle={styles.cardsContainer}>
-          {["Pecho", "Espalda", "Abdomen", "Brazo", "Pierna"].map(
-            (muscle, index) => (
-              <MuscleCard
-                key={index}
-                muscle={muscle}
-                onPress={() => handleCardPress(muscle)}
-              />
-            )
-          )}
+          <BackCard onPress={() => handleCardPress("Espalda")} />
+          <ChestCard onPress={() => handleCardPress("Pecho")} />
+          <AbsCard onPress={() => handleCardPress("Abdomen")} />
+          <ArmCard onPress={() => handleCardPress("Brazo")} />
+          <LegCard onPress={() => handleCardPress("Pierna")} />
         </ScrollView>
       </View>
-      <ExerciseModal
-        visible={modalVisible}
-        muscle={selectedMuscle}
-        exercises={exercises}
-        onClose={() => setModalVisible(false)}
-      />
+      {selectedMuscle === "Espalda" && (
+        <BackModal visible={modalVisible} onClose={closeModal} />
+      )}
+      {selectedMuscle === "Pecho" && (
+        <ChestModal visible={modalVisible} onClose={closeModal} />
+      )}
+      {selectedMuscle === "Abdomen" && (
+        <AbsModal visible={modalVisible} onClose={closeModal} />
+      )}
+      {selectedMuscle === "Brazo" && (
+        <ArmModal visible={modalVisible} onClose={closeModal} />
+      )}
+      {selectedMuscle === "Pierna" && (
+        <LegModal visible={modalVisible} onClose={closeModal} />
+      )}
     </View>
   );
 }
@@ -61,5 +77,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
-

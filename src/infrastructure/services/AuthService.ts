@@ -17,7 +17,7 @@ export class AuthService {
   private apiUrl: string;
 
   constructor(private userRepository: IUserRepository) {
-    this.apiUrl = 'http://172.20.10.2:8082/'; // Cambia esto a la URL de tu API
+    this.apiUrl = 'http://44.221.105.166:8081/'; // Cambia esto a la URL de tu API
   }
 
   async register(name: string, email: string, password: string, heigth: number, weigth: number, gender: string): Promise<User> {

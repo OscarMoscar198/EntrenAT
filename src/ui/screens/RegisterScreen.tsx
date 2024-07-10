@@ -80,7 +80,7 @@ export const RegisterScreen = ({ navigation }: any) => {
   const handleRegister = async () => {
     console.log(name, email, password, height, weight, sex);
     try {
-      const response = await fetch("http://172.20.10.2:8082/register", {
+      const response = await fetch("http://44.221.105.166:8081/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

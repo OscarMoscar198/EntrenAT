@@ -18,7 +18,7 @@ export default function GymbroScreen() {
   // Función para obtener usuarios de la API
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://172.20.10.2:8082/list");
+      const response = await fetch("http://44.221.105.166:8081/list");
       const data = await response.json();
       setUsers(data.data.users); // Accede a los usuarios dentro de 'data.data.users'
     } catch (error) {

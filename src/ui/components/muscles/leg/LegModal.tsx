@@ -1,3 +1,4 @@
+// components/muscles/ChestModal.tsx
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -10,19 +11,18 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-interface ExerciseModalProps {
+interface LegModalProps {
   visible: boolean;
-  muscle: string;
-  exercises: string[];
   onClose: () => void;
 }
 
-const ExerciseModal: React.FC<ExerciseModalProps> = ({
-  visible,
-  muscle,
-  exercises,
-  onClose,
-}) => {
+const LegModal: React.FC<LegModalProps> = ({ visible, onClose }) => {
+  const exercises = [
+    "Leg Press",
+    "Leg Curl",
+    "Leg Extension",
+    "Squat",
+  ];
   const [weights, setWeights] = useState(Array(exercises.length).fill(""));
 
   const handleInputChange = (text: string, index: number) => {
@@ -33,10 +33,9 @@ const ExerciseModal: React.FC<ExerciseModalProps> = ({
 
   const handleSave = async () => {
     try {
-      const userId = 2; // ID de usuario fijo para el registro
-      const exercisesId = 1; // ID de ejercicio fijo para el registro
+      const userId = 2;
+      const exercisesId = 2;
 
-      // Solo envía los datos del primer ejercicio registrado
       const data = {
         userid: userId,
         exercisesid: exercisesId,
@@ -53,14 +52,11 @@ const ExerciseModal: React.FC<ExerciseModalProps> = ({
 
       const result = await response.json();
       if (result.status === "success") {
-        console.log("Registro exitoso:", result.data);
         alert("Datos registrados correctamente.");
       } else {
-        console.error("Error en el registro:", result);
         Alert.alert("Error", result.message);
       }
     } catch (error) {
-      console.error("Error al registrar los datos:", error);
       Alert.alert("Error", "Hubo un problema al registrar los datos.");
     }
 
@@ -80,7 +76,7 @@ const ExerciseModal: React.FC<ExerciseModalProps> = ({
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>X</Text>
           </TouchableOpacity>
-          <Text style={styles.modalHeader}>Ejercicios para {muscle}</Text>
+          <Text style={styles.modalHeader}>Ejercicios para Pierna</Text>
           {exercises.map((exercise, index) => (
             <View key={index} style={styles.exerciseContainer}>
               <Text style={styles.exerciseText}>{exercise}</Text>
@@ -113,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     alignItems: "center",
-    position: "relative", // Para posicionar absolutamente el botón de cierre
+    position: "relative",
   },
   modalHeader: {
     fontSize: 20,
@@ -146,4 +142,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ExerciseModal;
+export default LegModal;
