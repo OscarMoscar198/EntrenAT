@@ -2,14 +2,17 @@ import * as React from "react";
 import { BottomNavigation, Text } from "react-native-paper";
 import MuscleScreen from "../screens/MuscleScreen";
 import GymbroScreen from "../screens/GymbroScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import ChatBotScreen from "../screens/ChatBotScreen";
+import StatsScreen from "../screens/StatsScreen";
 
-const ProfileRoute = () => <Text>Perfil</Text>;
+const ProfileRoute = () => <ProfileScreen/>;
 
-const ChatRoute = () => <Text>Chat</Text>;
+const ChatRoute = () => <ChatBotScreen/>;
 
 const GymbroRoute = () => <GymbroScreen />;
 
-const StatsRoute = () => <Text>Progreso</Text>;
+const StatsRoute = () => <StatsScreen/>;
 
 const MuscleRoute = () => <MuscleScreen/>;
 

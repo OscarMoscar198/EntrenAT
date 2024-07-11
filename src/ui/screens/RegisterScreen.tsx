@@ -146,7 +146,6 @@ export const RegisterScreen = ({ navigation }: any) => {
             value={password}
             onChangeText={setPassword}
             secureTextEntry
-            right={<TextInput.Icon icon="eye" />}
           />
           <TextInput
             style={styles.input}
@@ -154,7 +153,6 @@ export const RegisterScreen = ({ navigation }: any) => {
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             secureTextEntry
-            right={<TextInput.Icon icon="eye" />}
           />
           <TextInput
             style={styles.input}

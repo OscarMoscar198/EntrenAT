@@ -16,7 +16,7 @@ interface BicepModalProps {
 }
 
 const BicepModal: React.FC<BicepModalProps> = ({ visible, onClose }) => {
-  const exercises = ["Bicep Curls", "Hammer Curls", "Concentration Curls"];
+  const exercises = ["Bicep Curls", "Hammer Curls", "Barbell Curls"];
   const [weights, setWeights] = useState(Array(exercises.length).fill(""));
 
   const handleInputChange = (text: string, index: number) => {
@@ -36,7 +36,7 @@ const BicepModal: React.FC<BicepModalProps> = ({ visible, onClose }) => {
         weight: parseFloat(weights[0]),
       };
 
-      const response = await fetch("http://172.20.10.2:8083/add", {
+      const response = await fetch("http://3.88.218.74:8082/add/arm", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

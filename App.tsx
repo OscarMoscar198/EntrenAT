@@ -6,8 +6,6 @@ import { WelcomeScreen } from "./src/ui/screens/WelcomeScreen";
 import { LoginScreen } from "./src/ui/screens/LoginScreen";
 import { RegisterScreen } from "./src/ui/screens/RegisterScreen";
 import { PaperProvider } from "react-native-paper";
-import { AppRegistry } from "react-native";
-import MuscleScreen from "./src/ui/screens/MuscleScreen";
 import HomeScreen from "./src/ui/screens/HomeScreen";
 
 const Stack = createStackNavigator();

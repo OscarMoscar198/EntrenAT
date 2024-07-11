@@ -6,7 +6,7 @@ interface CoreCardProps {
 }
 
 const CoreCard: React.FC<CoreCardProps> = ({ onPress }) => {
-  return <MuscleCard muscle="Abdomen" onPress={onPress} />;
+  return <MuscleCard muscle="Abdomen" onPress={() => onPress("Abdomen")} />;
 };
 
 export default CoreCard;

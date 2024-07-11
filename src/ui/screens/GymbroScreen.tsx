@@ -31,10 +31,10 @@ export default function GymbroScreen() {
   }, []);
 
   const renderUserCard = ({ item }: { item: User }) => (
-    <Card style={styles.card}>
+    <Card style={styles.card} key={item.email}>
       <View style={styles.cardContent}>
         <Image
-          source={{ uri: 'https://via.placeholder.com/150' }} // Reemplaza esto con la URL de la foto de perfil del usuario si está disponible
+          source={{ uri: "https://via.placeholder.com/150" }} // Reemplaza esto con la URL de la foto de perfil del usuario si está disponible
           style={styles.profileImage}
         />
         <View style={styles.cardText}>
@@ -51,7 +51,7 @@ export default function GymbroScreen() {
   return (
     <View style={styles.container}>
       <Searchbar
-        placeholder="Search"
+        placeholder="Buscar"
         onChangeText={setSearchQuery}
         value={searchQuery}
         style={styles.searchbar}
@@ -75,15 +75,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   list: {
-    width: '100%',
+    width: "100%",
   },
   card: {
     marginBottom: 16,
     borderRadius: 10,
   },
   cardContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 16,
   },
   profileImage: {

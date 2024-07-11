@@ -6,7 +6,7 @@ interface BackCardProps {
 }
 
 const BackCard: React.FC<BackCardProps> = ({ onPress }) => {
-  return <MuscleCard muscle="Espalda" onPress={onPress} />;
+  return <MuscleCard muscle="Espalda" onPress={() => onPress("Espalda")} />;
 };
 
 export default BackCard;

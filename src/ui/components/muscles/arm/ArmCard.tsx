@@ -6,7 +6,7 @@ interface ArmCardProps {
 }
 
 const ArmCard: React.FC<ArmCardProps> = ({ onPress }) => {
-  return <MuscleCard muscle="Brazo" onPress={onPress} />;
+  return <MuscleCard muscle="Brazo" onPress={() => onPress("Brazo")} />;
 };
 
 export default ArmCard;

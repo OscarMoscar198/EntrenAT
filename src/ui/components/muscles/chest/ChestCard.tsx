@@ -6,7 +6,7 @@ interface ChestCardProps {
 }
 
 const ChestCard: React.FC<ChestCardProps> = ({ onPress }) => {
-  return <MuscleCard muscle="Pecho" onPress={onPress} />;
+  return <MuscleCard muscle="Pecho" onPress={() => onPress("Pecho")} />;
 };
 
 export default ChestCard;

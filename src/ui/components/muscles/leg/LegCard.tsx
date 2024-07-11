@@ -6,7 +6,7 @@ interface LegCardProps {
 }
 
 const LegCard: React.FC<LegCardProps> = ({ onPress }) => {
-  return <MuscleCard muscle="Pierna" onPress={onPress} />;
+  return <MuscleCard muscle="Pierna" onPress={() => onPress("Pierna")} />;
 };
 
 export default LegCard;

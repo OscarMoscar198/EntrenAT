@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground, Image } from "react-native";
 import {
   Button,
   Text,
@@ -12,7 +12,7 @@ const theme = {
   roundness: 10,
   colors: {
     ...DefaultTheme.colors,
-    primary: "#F04444", // color para el botón y otros componentes principales
+    primary: "#F04444",
   },
 };
 
@@ -25,6 +25,12 @@ export const WelcomeScreen = ({ navigation }: any) => {
       >
         <View style={styles.overlay} />
         <View style={styles.container}>
+          <View style={styles.logoContainer}>
+            <Image
+              source={require("../../../assets/logo/logo.png")} // Asegúrate de que la ruta a la imagen del logo sea correcta
+              style={styles.logo}
+            />
+          </View>
           <Text style={styles.text} variant="displaySmall">
             Comienza el cambio
           </Text>
@@ -32,7 +38,7 @@ export const WelcomeScreen = ({ navigation }: any) => {
             Tú tienes el poder
           </Text>
           <Button
-            style={styles.button} // Asegúrate de aplicar el estilo al botón
+            style={styles.button}
             mode="contained"
             onPress={() => navigation.navigate("Login")}
           >
@@ -47,20 +53,34 @@ export const WelcomeScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
     padding: 16,
+    paddingBottom: 100,
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0,0,0,0.3)",
   },
+  logoContainer: {
+    position: "absolute",
+    top: -350,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  logo: {
+    width: 150, // Ajusta el tamaño según necesites
+    height: 150, // Ajusta el tamaño según necesites
+  },
   text: {
     color: "white",
-    marginBottom: 10, // Añade un margen inferior para separar los textos
+    marginBottom: 10,
   },
   button: {
     width: "100%",
-    marginTop: 20, // Añade un margen superior para separar el botón del texto
+    marginTop: 20,
   },
 });

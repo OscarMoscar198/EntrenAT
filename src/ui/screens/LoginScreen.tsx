@@ -91,7 +91,6 @@ export const LoginScreen = ({ navigation }: any) => {
               value={password}
               onChangeText={setPassword}
               secureTextEntry
-              right={<TextInput.Icon icon="eye" />}
               theme={{ colors: { text: "white", primary: "#F04444" } }}
             />
             <Button mode="contained" onPress={handleLogin}>
