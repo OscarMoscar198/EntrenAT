@@ -3,12 +3,16 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import BackCard from "../components/muscles/back/BackCard";
 import ChestCard from "../components/muscles/chest/ChestCard";
 import AbsCard from "../components/muscles/core/CoreCard";
-import ArmCard from "../components/muscles/arm/ArmCard";
+import BicepCard from "../components/muscles/arm/bicep/BicepCard";
+import TricepCard from "../components/muscles/arm/tricep/TricepCard";
+import ShoulderCard from "../components/muscles/arm/shoulder/ShoulderCard";
 import LegCard from "../components/muscles/leg/LegCard";
 import BackModal from "../components/muscles/back/BackModal";
 import ChestModal from "../components/muscles/chest/ChestModal";
 import AbsModal from "../components/muscles/core/CoreModal";
-import ArmModal from "../components/muscles/arm/ArmModal";
+import BicepModal from "../components/muscles/arm/bicep/BicepModal";
+import TricepModal from "../components/muscles/arm/tricep/TricepModal";
+import ShoulderModal from "../components/muscles/arm/shoulder/ShoulderModal";
 import LegModal from "../components/muscles/leg/LegModal";
 
 export default function MuscleScreen() {
@@ -33,7 +37,9 @@ export default function MuscleScreen() {
           <BackCard onPress={() => handleCardPress("Espalda")} />
           <ChestCard onPress={() => handleCardPress("Pecho")} />
           <AbsCard onPress={() => handleCardPress("Abdomen")} />
-          <ArmCard onPress={() => handleCardPress("Brazo")} />
+          <BicepCard onPress={() => handleCardPress("Bíceps")} />
+          <TricepCard onPress={() => handleCardPress("Tríceps")} />
+          <ShoulderCard onPress={() => handleCardPress("Hombros")} />
           <LegCard onPress={() => handleCardPress("Pierna")} />
         </ScrollView>
       </View>
@@ -46,8 +52,14 @@ export default function MuscleScreen() {
       {selectedMuscle === "Abdomen" && (
         <AbsModal visible={modalVisible} onClose={closeModal} />
       )}
-      {selectedMuscle === "Brazo" && (
-        <ArmModal visible={modalVisible} onClose={closeModal} />
+      {selectedMuscle === "Bíceps" && (
+        <BicepModal visible={modalVisible} onClose={closeModal} />
+      )}
+      {selectedMuscle === "Tríceps" && (
+        <TricepModal visible={modalVisible} onClose={closeModal} />
+      )}
+      {selectedMuscle === "Hombros" && (
+        <ShoulderModal visible={modalVisible} onClose={closeModal} />
       )}
       {selectedMuscle === "Pierna" && (
         <LegModal visible={modalVisible} onClose={closeModal} />
