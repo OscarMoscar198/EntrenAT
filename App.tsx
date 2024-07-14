@@ -7,6 +7,8 @@ import { LoginScreen } from "./src/ui/screens/LoginScreen";
 import { RegisterScreen } from "./src/ui/screens/RegisterScreen";
 import { PaperProvider } from "react-native-paper";
 import HomeScreen from "./src/ui/screens/HomeScreen";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet } from "react-native";
 
 const Stack = createStackNavigator();
 
@@ -14,13 +16,39 @@ export default function App() {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Welcome">
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Register" component={RegisterScreen} />
-          <Stack.Screen name="Home" component={HomeScreen} />
-        </Stack.Navigator>
+        <SafeAreaProvider>
+          <SafeAreaView style={styles.container}>
+            <Stack.Navigator initialRouteName="Welcome">
+              <Stack.Screen
+                name="Welcome"
+                component={WelcomeScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Login"
+                component={LoginScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Register"
+                component={RegisterScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{ headerShown: false }}
+              />
+            </Stack.Navigator>
+          </SafeAreaView>
+        </SafeAreaProvider>
       </NavigationContainer>
     </PaperProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

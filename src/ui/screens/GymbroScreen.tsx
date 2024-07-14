@@ -31,7 +31,7 @@ export default function GymbroScreen() {
   }, []);
 
   const renderUserCard = ({ item }: { item: User }) => (
-    <Card style={styles.card} key={item.email}>
+    <Card style={styles.card}>
       <View style={styles.cardContent}>
         <Image
           source={{ uri: "https://via.placeholder.com/150" }} // Reemplaza esto con la URL de la foto de perfil del usuario si está disponible
